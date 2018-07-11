@@ -1,0 +1,26 @@
+{
+  "name": "artemeon/pdf",
+  "type": "library",
+  "description": "Wrapping tcpdf, providing a more streamlined api",
+  "keywords": ["pdf"],
+  "homepage": "https://github.com/artemeon/pdf",
+  "license": "MIT",
+  "require": {
+    "php": ">=7.0",
+    "tecnickcom/tcpdf": "6.2.12"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^6.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Artemeon\\Pdf\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Artemeon\\Pdf\\Tests\\": "tests"
+    }
+  }
+}
+
