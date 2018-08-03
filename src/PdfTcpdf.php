@@ -14,8 +14,6 @@ namespace Artemeon\Pdf;
 
 use TCPDF;
 
-require_once(__DIR__ . "/../vendor/autoload.php");
-
 /**
  * Cache directory for temporary files (full path).
  */
