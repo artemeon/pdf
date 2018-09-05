@@ -320,15 +320,16 @@ class Pdf
      * @param string $strTitle
      * @param int $intTargetPage
      *
-     * @see Pdf::addBookmark()
+     * @param string $orientation
      * @return void
+     * @see Pdf::addBookmark()
      */
-    public function addTableOfContents($strTitle, $intTargetPage = 2)
+    public function addTableOfContents($strTitle, $intTargetPage = 2, $orientation = '')
     {
 
 
         // add a new page for TOC
-        $this->objPdf->addTOCPage();
+        $this->objPdf->addTOCPage($orientation);
         $this->objPdf->selectColumn(0);
 
         if ($strTitle !== "") {
