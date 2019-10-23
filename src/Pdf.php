@@ -390,12 +390,13 @@ class Pdf
      * Sends the pdf directly to the browser
      *
      * @param string $strFilename
+     * @param bool $inline
      * @return void
      */
-    public function sendPdfToBrowser($strFilename = "kajonaPdf.pdf")
+    public function sendPdfToBrowser($strFilename = "kajonaPdf.pdf", $inline = false)
     {
         mb_internal_encoding('ASCII');
-        $this->objPdf->Output($strFilename, 'I');
+        $this->objPdf->Output($strFilename, $inline ? 'I' : 'D');
         mb_internal_encoding('UTF-8');
         die();
     }
