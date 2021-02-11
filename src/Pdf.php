@@ -61,10 +61,10 @@ class Pdf
         $this->objPdf = new PdfTcpdf(self::$PAGE_ORIENTATION_PORTRAIT, self::$PDF_UNIT, self::$PAGE_FORMAT_A4);
 
         //document meta data
-        $this->objPdf->SetCreator("Kajona V7");
-        $this->objPdf->SetAuthor('Kajona PDF Engine');
-        $this->objPdf->SetTitle('Kajona PDF');
-        $this->objPdf->SetSubject('Kajona Core Application Framework');
+        $this->objPdf->SetCreator("ARTEMEON AGP");
+        $this->objPdf->SetAuthor('ARTEMEON AGP PDF Engine');
+        $this->objPdf->SetTitle('ARTEMEON AGP PDF');
+        $this->objPdf->SetSubject('ARTEMEON AGP');
         $this->objPdf->SetKeywords('');
 
         $this->objPdf->SetMargins(self::$PDF_MARGIN_LEFT, self::$PDF_MARGIN_TOP, self::$PDF_MARGIN_RIGHT);
