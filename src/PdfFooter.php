@@ -83,11 +83,11 @@ class PdfFooter implements PdfFooterInterface
     }
 
     /**
-     * @param bool $bitSkipFirstPage
+     * @param bool $bitSkip
      */
-    public function setBitSkipFirstPage(bool $bitSkipFirstPage)
+    public function setBitSkipFirstPage(bool $bitSkip)
     {
-        $this->bitSkipFirstPage = $bitSkipFirstPage;
+        $this->bitSkipFirstPage = $bitSkip;
     }
 
     /**

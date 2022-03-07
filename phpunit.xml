@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<phpunit convertErrorsToExceptions="true"
+    convertNoticesToExceptions="true"
+    convertWarningsToExceptions="true"
+    bootstrap="vendor/autoload.php">
+    <testsuites>
+        <testsuite name="Tests">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
