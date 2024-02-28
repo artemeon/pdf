@@ -33,14 +33,12 @@ class PdfTcpdf extends TCPDF
     protected $bitFooter = true;
 
     /**
-     *
-     * @var PdfHeaderInterface
+     * @var ?PdfHeaderInterface
      */
     protected $objHeader = null;
 
     /**
-     *
-     * @var PdfFooterInterface
+     * @var ?PdfFooterInterface
      */
     protected $objFooter = null;
 
@@ -65,7 +63,7 @@ class PdfTcpdf extends TCPDF
         $intStyle = $this->FontStyle;
 
 
-        if ($this->objHeader != null && $this->objHeader instanceof PdfHeaderInterface) {
+        if ($this->objHeader instanceof PdfHeaderInterface) {
             $this->objHeader->writeHeader($this);
         }
 
@@ -86,7 +84,7 @@ class PdfTcpdf extends TCPDF
         $intSize = $this->FontSize;
         $intStyle = $this->FontStyle;
 
-        if ($this->objFooter != null && $this->objFooter instanceof PdfFooterInterface) {
+        if ($this->objFooter instanceof PdfFooterInterface) {
             $this->objFooter->writeFooter($this);
         }
 

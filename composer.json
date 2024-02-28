@@ -5,13 +5,18 @@
   "keywords": ["pdf"],
   "homepage": "https://github.com/artemeon/pdf",
   "license": "MIT",
+  "scripts": {
+    "phpstan": "php ./vendor/bin/phpstan analyse --memory-limit=4G"
+  },
   "require": {
     "php": ">=8.0",
     "tecnickcom/tcpdf": "^6.4"
   },
   "require-dev": {
     "phpunit/phpunit": "^8.0",
-    "vimeo/psalm": "^4.22"
+    "phpstan/phpstan": "^1.10",
+    "phpstan/extension-installer": "^1.3",
+    "phpstan/phpstan-phpunit": "^1.3"
   },
   "autoload": {
     "psr-4": {
@@ -21,6 +26,11 @@
   "autoload-dev": {
     "psr-4": {
       "Artemeon\\Pdf\\Tests\\": "tests"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "phpstan/extension-installer": true
     }
   }
 }
