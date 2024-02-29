@@ -107,11 +107,7 @@ class Pdf
         $this->objPdf->SetKeywords($strKeywords);
     }
 
-    /**
-     * @return bool
-     * @return void
-     */
-    public function getBitHeader()
+    public function getBitHeader(): bool
     {
         return $this->objPdf->getBitHeader();
     }
@@ -256,7 +252,7 @@ class Pdf
             $strBorders = 0;
         }
 
-        $this->objPdf->Cell($intWidth, $intHeight, $strContent, $strBorders, 1, $strAlign, $bitFill);
+        $this->objPdf->Cell($intWidth, $intHeight, $strContent, $strBorders, 1, $strAlign, (bool) $bitFill);
     }
 
     /**
