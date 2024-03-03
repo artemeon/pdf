@@ -1,0 +1,9 @@
+name: PHPStan
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+jobs:
+  phpstan:
+    uses: artemeon/.shared/.github/workflows/phpstan.yml@main
