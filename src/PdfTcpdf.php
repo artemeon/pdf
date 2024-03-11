@@ -42,13 +42,6 @@ class PdfTcpdf extends TCPDF
      */
     protected $objFooter = null;
 
-
-    public function __construct($orientation = 'P', $unit = 'mm', $format = 'A4', $unicode = true, $encoding = 'UTF-8', $diskcache = false)
-    {
-        parent::__construct($orientation, $unit, $format, $unicode, $encoding, $diskcache);
-    }
-
-
     //Page header
     public function Header()
     {
