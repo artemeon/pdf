@@ -236,7 +236,7 @@ class Pdf
      * @param int $bitCursorPos 1 = next line, 0 = to the right
      * @param bool $bitIsHtml
      */
-    public function addMultiCell($strContent = '', $intWidth = 0, $intHeight = 0, $bitBorders = [false, false, false, false], $strAlign = 'L', $bitFill = false, $intX = '', $intY = '', $bitCursorPos = 1, $bitIsHtml = false): void
+    public function addMultiCell($strContent = '', $intWidth = 0, $intHeight = 0, $bitBorders = [false, false, false, false], $strAlign = 'L', $bitFill = false, $intX = 0, $intY = 0, $bitCursorPos = 1, $bitIsHtml = false): void
     {
         $strBorders = '';
         if ($bitBorders[0]) {
@@ -256,7 +256,7 @@ class Pdf
             $strBorders = 0;
         }
 
-        $this->objPdf->MultiCell($intWidth, $intHeight, $strContent, $strBorders, $strAlign, $bitFill, $bitCursorPos, $intX, $intY, true, 0, $bitIsHtml);
+        $this->objPdf->MultiCell($intWidth, $intHeight, $strContent, $strBorders, $strAlign, $bitFill, $bitCursorPos, (float) $intX, (float) $intY, true, 0, $bitIsHtml);
     }
 
     /**
