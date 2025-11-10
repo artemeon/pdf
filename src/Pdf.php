@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the Artemeon Core - Web Application Framework.
  *
@@ -10,7 +11,6 @@
 
 namespace Artemeon\Pdf;
 
-
 /**
  * This class provides access to a simplified pdf-generation.
  *
@@ -18,50 +18,39 @@ namespace Artemeon\Pdf;
  */
 class Pdf
 {
+    public static string $PAGE_ORIENTATION_PORTRAIT = 'P';
+    public static string $PAGE_ORIENTATION_LANDSCAPE = 'L';
+    public static string $PAGE_FORMAT_A4 = 'A4';
 
-    public static string $PAGE_ORIENTATION_PORTRAIT = "P";
-    public static string $PAGE_ORIENTATION_LANDSCAPE = "L";
-    public static string $PAGE_FORMAT_A4 = "A4";
+    public static string $PDF_UNIT = 'mm';
 
-    public static string $PDF_UNIT = "mm";
+    public static string $TEXT_ALIGN_CENTER = 'C';
+    public static string $TEXT_ALIGN_RIGHT = 'R';
+    public static string $TEXT_ALIGN_LEFT = 'L';
 
-    public static string $TEXT_ALIGN_CENTER = "C";
-    public static string $TEXT_ALIGN_RIGHT = "R";
-    public static string $TEXT_ALIGN_LEFT = "L";
-
-    public static string $FONT_STYLE_REGULAR = "";
-    public static string $FONT_STYLE_BOLD = "B";
-    public static string $FONT_STYLE_ITALIC = "I";
-    public static string $FONT_STYLE_UNDERLINE = "U";
-    public static string $FONT_STYLE_LINE_TROUGH = "D";
+    public static string $FONT_STYLE_REGULAR = '';
+    public static string $FONT_STYLE_BOLD = 'B';
+    public static string $FONT_STYLE_ITALIC = 'I';
+    public static string $FONT_STYLE_UNDERLINE = 'U';
+    public static string $FONT_STYLE_LINE_TROUGH = 'D';
 
     public static int $PDF_MARGIN_LEFT = 10;
     public static int $PDF_MARGIN_TOP = 15;
     public static int $PDF_MARGIN_RIGHT = 10;
 
     /**
-     * The default date format, e.g. used by the footer
-     * @var string
+     * The default date format, e.g. used by the footer.
      */
-    public static string $DATE_FORMAT = "d.m.Y";
+    public static string $DATE_FORMAT = 'd.m.Y';
 
-
-    /**
-     * @var PdfTcpdf
-     */
     private PdfTcpdf $objPdf;
 
-
-    /**
-     * Default constructor
-     */
     public function __construct()
     {
-
         $this->objPdf = new PdfTcpdf(self::$PAGE_ORIENTATION_PORTRAIT, self::$PDF_UNIT, self::$PAGE_FORMAT_A4);
 
-        //document meta data
-        $this->objPdf->SetCreator("ARTEMEON AGP");
+        // document meta data
+        $this->objPdf->SetCreator('ARTEMEON AGP');
         $this->objPdf->SetAuthor('ARTEMEON AGP PDF Engine');
         $this->objPdf->SetTitle('ARTEMEON AGP PDF');
         $this->objPdf->SetSubject('ARTEMEON AGP');
@@ -69,8 +58,8 @@ class Pdf
 
         $this->objPdf->SetMargins(self::$PDF_MARGIN_LEFT, self::$PDF_MARGIN_TOP, self::$PDF_MARGIN_RIGHT);
 
-        //this is the default, so not set explicitly
-        //$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+        // this is the default, so not set explicitly
+        // $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 
         $this->setHeader(new PdfHeader());
         $objFooter = new PdfFooter();
@@ -82,27 +71,24 @@ class Pdf
 
     /**
      * @param string $strTitle
-     * @return void
      */
-    public function setStrTitle($strTitle)
+    public function setStrTitle($strTitle): void
     {
         $this->objPdf->SetTitle($strTitle);
     }
 
     /**
      * @param string $strSubject
-     * @return void
      */
-    public function setStrSubject($strSubject)
+    public function setStrSubject($strSubject): void
     {
         $this->objPdf->SetSubject($strSubject);
     }
 
     /**
      * @param string $strKeywords
-     * @return void
      */
-    public function setStrKeywords($strKeywords)
+    public function setStrKeywords($strKeywords): void
     {
         $this->objPdf->SetKeywords($strKeywords);
     }
@@ -114,44 +100,37 @@ class Pdf
 
     /**
      * @param bool $bitHeader
-     * @return void
      */
-    public function setBitHeader($bitHeader)
+    public function setBitHeader($bitHeader): void
     {
         $this->objPdf->setBitHeader($bitHeader);
     }
 
-    /**
-     * @return bool
-     */
-    public function getBitFooter()
+    public function getBitFooter(): bool
     {
         return $this->objPdf->getBitFooter();
     }
 
     /**
      * @param bool $bitFooter
-     * @return void
      */
-    public function setBitFooter($bitFooter)
+    public function setBitFooter($bitFooter): void
     {
         $this->objPdf->setBitFooter($bitFooter);
     }
 
     /**
      * @param PdfHeader $objHeader
-     * @return void
      */
-    public function setHeader($objHeader)
+    public function setHeader($objHeader): void
     {
         $this->objPdf->setObjHeader($objHeader);
     }
 
     /**
      * @param PdfFooter $objFooter
-     * @return void
      */
-    public function setFooter($objFooter)
+    public function setFooter($objFooter): void
     {
         $this->objPdf->setObjFooter($objFooter);
     }
@@ -159,18 +138,16 @@ class Pdf
     /**
      * @param int $intNrOfColumns
      * @param int $intColumnWidth
-     * @return void
      */
-    public function setNumberOfColumns($intNrOfColumns, $intColumnWidth = 0)
+    public function setNumberOfColumns($intNrOfColumns, $intColumnWidth = 0): void
     {
         $this->objPdf->setEqualColumns($intNrOfColumns, $intColumnWidth);
     }
 
     /**
      * @param int $intColumn
-     * @return void
      */
-    public function selectColumn($intColumn = 0)
+    public function selectColumn($intColumn = 0): void
     {
         $this->objPdf->selectColumn($intColumn);
     }
@@ -178,36 +155,30 @@ class Pdf
     /**
      * @param string $strTitle
      * @param int $intLevel
-     * @return void
      */
-    public function addBookmark($strTitle, $intLevel = 0)
+    public function addBookmark($strTitle, $intLevel = 0): void
     {
         $this->objPdf->Bookmark($strTitle, $intLevel);
     }
 
-    /**
-     * @return void
-     */
-    public function addLineBreak()
+    public function addLineBreak(): void
     {
         $this->objPdf->Ln();
     }
 
-
     /**
-     * Finalizes the current page and starts a new one
+     * Finalizes the current page and starts a new one.
      *
      * @param string $PAGE_ORIENTATION one of self::$PAGE_ORIENTATION_PORTRAIT
      * @param string $PAGE_FORMAT one of self::$PAGE_ORIENTATION_LANDSCAPE, self::$PAGE_FORMAT_A4
-     * @return void
      */
-    public function addPage($PAGE_ORIENTATION = "", $PAGE_FORMAT = "")
+    public function addPage($PAGE_ORIENTATION = '', $PAGE_FORMAT = ''): void
     {
-        if ($PAGE_ORIENTATION == "") {
+        if ($PAGE_ORIENTATION == '') {
             $PAGE_ORIENTATION = self::$PAGE_ORIENTATION_PORTRAIT;
         }
 
-        if ($PAGE_FORMAT == "") {
+        if ($PAGE_FORMAT == '') {
             $PAGE_FORMAT = self::$PAGE_FORMAT_A4;
         }
 
@@ -215,11 +186,9 @@ class Pdf
         $this->objPdf->resetColumns();
     }
 
-
     /**
      * Creates a single cell using NO automatic wrapping at the end of the cell.
      * In most cases, addMultiCell is the element you may want to use instead.
-     *
      *
      * @param string $strContent
      * @param int $intWidth
@@ -229,26 +198,24 @@ class Pdf
      * @param int $bitFill fill the cell with the color set before via setFillColor()
      *
      * @see Pdf::addMultiCell()
-     * @return void
      */
-    public function addCell($strContent = '', $intWidth = 0, $intHeight = 0, $bitBorders = array(false, false, false, false), $strAlign = "L", $bitFill = 0)
+    public function addCell($strContent = '', $intWidth = 0, $intHeight = 0, $bitBorders = [false, false, false, false], $strAlign = 'L', $bitFill = 0): void
     {
-
-        $strBorders = "";
+        $strBorders = '';
         if ($bitBorders[0]) {
-            $strBorders .= "T";
+            $strBorders .= 'T';
         }
         if ($bitBorders[1]) {
-            $strBorders .= "R";
+            $strBorders .= 'R';
         }
         if ($bitBorders[2]) {
-            $strBorders .= "B";
+            $strBorders .= 'B';
         }
         if ($bitBorders[3]) {
-            $strBorders .= "L";
+            $strBorders .= 'L';
         }
 
-        if ($strBorders == "") {
+        if ($strBorders == '') {
             $strBorders = 0;
         }
 
@@ -268,27 +235,24 @@ class Pdf
      * @param int|string $intY
      * @param int $bitCursorPos 1 = next line, 0 = to the right
      * @param bool $bitIsHtml
-     *
-     * @return void
      */
-    public function addMultiCell($strContent = '', $intWidth = 0, $intHeight = 0, $bitBorders = array(false, false, false, false), $strAlign = "L", $bitFill = false, $intX = '', $intY = '', $bitCursorPos = 1, $bitIsHtml = false)
+    public function addMultiCell($strContent = '', $intWidth = 0, $intHeight = 0, $bitBorders = [false, false, false, false], $strAlign = 'L', $bitFill = false, $intX = '', $intY = '', $bitCursorPos = 1, $bitIsHtml = false): void
     {
-
-        $strBorders = "";
+        $strBorders = '';
         if ($bitBorders[0]) {
-            $strBorders .= "T";
+            $strBorders .= 'T';
         }
         if ($bitBorders[1]) {
-            $strBorders .= "R";
+            $strBorders .= 'R';
         }
         if ($bitBorders[2]) {
-            $strBorders .= "B";
+            $strBorders .= 'B';
         }
         if ($bitBorders[3]) {
-            $strBorders .= "L";
+            $strBorders .= 'L';
         }
 
-        if ($strBorders == "") {
+        if ($strBorders == '') {
             $strBorders = 0;
         }
 
@@ -296,16 +260,14 @@ class Pdf
     }
 
     /**
-     * Adds a single paragraph to the pdf
+     * Adds a single paragraph to the pdf.
      *
      * @param string $strText
      * @param string $strAlign
-     *
-     * @return void
      */
-    public function addParagraph($strText, $strAlign = "L")
+    public function addParagraph($strText, $strAlign = 'L'): void
     {
-        $this->addMultiCell($strText, 0, 0, array(false, false, false, false), $strAlign);
+        $this->addMultiCell($strText, 0, 0, [false, false, false, false], $strAlign);
     }
 
     /**
@@ -315,20 +277,17 @@ class Pdf
      *
      * @param string $strTitle
      * @param int $intTargetPage
-     *
      * @param string $orientation
-     * @return void
+     *
      * @see Pdf::addBookmark()
      */
-    public function addTableOfContents($strTitle, $intTargetPage = 2, $orientation = '')
+    public function addTableOfContents($strTitle, $intTargetPage = 2, $orientation = ''): void
     {
-
-
         // add a new page for TOC
         $this->objPdf->addTOCPage($orientation);
         $this->objPdf->selectColumn(0);
 
-        if ($strTitle !== "") {
+        if ($strTitle !== '') {
             $this->addMultiCell($strTitle);
             $this->objPdf->Ln();
         }
@@ -346,10 +305,8 @@ class Pdf
      * @param string $strFont one of courier, helvetica, symbol, times
      * @param int $intSize
      * @param string $strStyle one of self::$FONT_STYLE_REGULAR, self::$FONT_STYLE_BOLD, self::$FONT_STYLE_ITALIC, self::$FONT_STYLE_UNDERLINE, self::$FONT_STYLE_LINE_TROUGH
-     *
-     * @return void
      */
-    public function setFont($strFont = "helvetica", $intSize = 10, $strStyle = "")
+    public function setFont($strFont = 'helvetica', $intSize = 10, $strStyle = ''): void
     {
         $this->objPdf->SetFont($strFont, $strStyle, $intSize);
     }
@@ -362,14 +319,12 @@ class Pdf
      * @param int $intY
      * @param int $intWidth
      * @param int $intHeight
-     *
-     * @return void
      */
-    public function addImage($strImage, $intX = null, $intY = null, $intWidth = 0, $intHeight = 0)
+    public function addImage($strImage, $intX = null, $intY = null, $intWidth = 0, $intHeight = 0): void
     {
         $strFilename = strtolower(basename($strImage));
 
-        if (strpos($strFilename, ".svg") !== false) {
+        if (strpos($strFilename, '.svg') !== false) {
             $this->objPdf->ImageSVG($strImage, $intX, $intY, $intWidth, $intHeight);
         } else {
             $this->objPdf->Image($strImage, $intX, $intY, $intWidth, $intHeight);
@@ -378,18 +333,15 @@ class Pdf
         if ($intHeight != 0) {
             $this->objPdf->SetY($this->objPdf->GetY() + $intHeight);
         }
-
     }
 
-
     /**
-     * Sends the pdf directly to the browser
+     * Sends the pdf directly to the browser.
      *
      * @param string $strFilename
      * @param bool $inline
-     * @return void
      */
-    public function sendPdfToBrowser($strFilename = "kajonaPdf.pdf", $inline = false)
+    public function sendPdfToBrowser($strFilename = 'kajonaPdf.pdf', $inline = false): void
     {
         mb_internal_encoding('ASCII');
         $this->objPdf->Output($strFilename, $inline ? 'I' : 'D');
@@ -398,56 +350,49 @@ class Pdf
     }
 
     /**
-     * Saves the pdf to the filesystem
+     * Saves the pdf to the filesystem.
      *
      * @param string $strFilename
-     * @return void
      */
-    public function savePdf($strFilename)
+    public function savePdf($strFilename): void
     {
         mb_internal_encoding('ASCII');
-        $this->objPdf->Output($strFilename, "F");
+        $this->objPdf->Output($strFilename, 'F');
         mb_internal_encoding('UTF-8');
     }
 
     /**
-     * Sets a fill color, e.g. to be used by addCell lateron
+     * Sets a fill color, e.g. to be used by addCell lateron.
      *
      * @param int $intR
      * @param int $intG
      * @param int $intB
-     *
-     * @return void
      */
-    public function setFillColor($intR, $intG, $intB)
+    public function setFillColor($intR, $intG, $intB): void
     {
         $this->objPdf->SetFillColor($intR, $intG, $intB);
     }
 
     /**
-     * Sets a fill color, e.g. to be used by addCell to render the borders
+     * Sets a fill color, e.g. to be used by addCell to render the borders.
      *
      * @param int $intR
      * @param int $intG
      * @param int $intB
-     *
-     * @return void
      */
-    public function setDrawColor($intR, $intG, $intB)
+    public function setDrawColor($intR, $intG, $intB): void
     {
         $this->objPdf->SetDrawColor($intR, $intG, $intB);
     }
 
     /**
-     * Sets a text color
+     * Sets a text color.
      *
      * @param int $intR
      * @param int $intG
      * @param int $intB
-     *
-     * @return void
      */
-    public function setTextColor($intR, $intG, $intB)
+    public function setTextColor($intR, $intG, $intB): void
     {
         $this->objPdf->SetTextColor($intR, $intG, $intB);
     }
@@ -455,14 +400,9 @@ class Pdf
     /**
      * Returns the current instance of the internal PDF-engine. Use this method
      * only if really really required.
-     *
-     * @return PdfTcpdf
      */
-    public function getObjPdf()
+    public function getObjPdf(): PdfTcpdf
     {
         return $this->objPdf;
     }
-
 }
-
-

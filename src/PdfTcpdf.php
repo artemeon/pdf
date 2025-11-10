@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the Artemeon Core - Web Application Framework.
  *
@@ -8,16 +9,14 @@
  * file that was distributed with this source code.
  */
 
-
 namespace Artemeon\Pdf;
-
 
 use TCPDF;
 
 /**
  * Cache directory for temporary files (full path).
  */
-//define('K_PATH_CACHE', _realpath_ . 'project/temp/');
+// define('K_PATH_CACHE', _realpath_ . 'project/temp/');
 
 /**
  * Extends the TCPDF class and is being used internally by Pdf.
@@ -27,8 +26,6 @@ use TCPDF;
  */
 class PdfTcpdf extends TCPDF
 {
-
-
     protected bool $bitHeader = true;
     protected bool $bitFooter = true;
 
@@ -36,24 +33,21 @@ class PdfTcpdf extends TCPDF
 
     protected ?PdfFooterInterface $objFooter = null;
 
-    //Page header
+    // Page header
     public function Header(): void
     {
-
         if (!$this->bitHeader) {
             return;
         }
 
-        //save old font
+        // save old font
         $strFont = $this->FontFamily;
         $intSize = $this->FontSize;
         $intStyle = $this->FontStyle;
 
-
         if ($this->objHeader instanceof PdfHeaderInterface) {
             $this->objHeader->writeHeader($this);
         }
-
 
         $this->SetFont($strFont, $intStyle, $intSize);
     }
@@ -61,12 +55,11 @@ class PdfTcpdf extends TCPDF
     // Page footer
     public function Footer(): void
     {
-
         if (!$this->bitFooter) {
             return;
         }
 
-        //save old font
+        // save old font
         $strFont = $this->FontFamily;
         $intSize = $this->FontSize;
         $intStyle = $this->FontStyle;
@@ -78,12 +71,10 @@ class PdfTcpdf extends TCPDF
         $this->SetFont($strFont, $intStyle, $intSize);
     }
 
-
     public function getTitle(): string
     {
         return $this->title;
     }
-
 
     public function getBitHeader(): bool
     {
@@ -126,6 +117,4 @@ class PdfTcpdf extends TCPDF
     {
         $this->objFooter = $objFooter;
     }
-
-
 }

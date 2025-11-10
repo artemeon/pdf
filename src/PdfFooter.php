@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the Artemeon Core - Web Application Framework.
  *
@@ -10,7 +11,6 @@
 
 namespace Artemeon\Pdf;
 
-
 /**
  * Sample implementation of a footer.
  *
@@ -18,26 +18,18 @@ namespace Artemeon\Pdf;
  */
 class PdfFooter implements PdfFooterInterface
 {
-
-    private string $strFooterAddon = "";
+    private string $strFooterAddon = '';
 
     private bool $bitSkipFirstPage = false;
 
-    private string $dateFormat = "m/d/Y";
-
-
-
+    private string $dateFormat = 'm/d/Y';
 
     /**
      * Writes the footer for a single page.
      * Use the passed $objPdf to access the pdf.
-     *
-     * @param PdfTcpdf $objPdf
-     * @return void
      */
-    public function writeFooter($objPdf)
+    public function writeFooter(PdfTcpdf $objPdf): void
     {
-
         if ($this->bitSkipFirstPage && $objPdf->getPage() == 1) {
             return;
         }
@@ -47,57 +39,37 @@ class PdfFooter implements PdfFooterInterface
         // Set font
         $objPdf->SetFont('helvetica', 'I', 8);
         // Page number
-        $objPdf->Cell(0, 0, $objPdf->getAliasNumPage().'/'.$objPdf->getAliasNbPages(), 'T', 0, 'R');
+        $objPdf->Cell(0, 0, $objPdf->getAliasNumPage() . '/' . $objPdf->getAliasNbPages(), 'T', 0, 'R');
 
         $objPdf->SetY(-10);
 
         $date = date($this->dateFormat, time());
-        //date
-        $objPdf->Cell(0, 0, ''.$date.$this->strFooterAddon, '0', 0, 'L');
-
+        // date
+        $objPdf->Cell(0, 0, '' . $date . $this->strFooterAddon, '0', 0, 'L');
     }
 
-    /**
-     * @param string $strFooterAddon
-     * @return void
-     */
-    public function setStrFooterAddon($strFooterAddon)
+    public function setStrFooterAddon(string $strFooterAddon): void
     {
         $this->strFooterAddon = $strFooterAddon;
     }
 
-    /**
-     * @return string
-     */
-    public function getStrFooterAddon()
+    public function getStrFooterAddon(): string
     {
         return $this->strFooterAddon;
     }
 
-    /**
-     * @return bool
-     */
     public function getBitSkipFirstPage(): bool
     {
         return $this->bitSkipFirstPage;
     }
 
-    /**
-     * @param bool $bitSkip
-     */
-    public function setBitSkipFirstPage(bool $bitSkip)
+    public function setBitSkipFirstPage(bool $bitSkip): void
     {
         $this->bitSkipFirstPage = $bitSkip;
     }
 
-    /**
-     * @param string $dateFormat
-     */
     public function setDateFormat(string $dateFormat): void
     {
         $this->dateFormat = $dateFormat;
     }
-
-
-
 }

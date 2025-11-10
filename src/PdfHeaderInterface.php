@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the Artemeon Core - Web Application Framework.
  *
@@ -10,27 +11,27 @@
 
 namespace Artemeon\Pdf;
 
-
 /**
- * Interface for a single pdf header element
+ * Interface for a single pdf header element.
  *
  * @author stefan.idler@artemeon.de
  */
-interface PdfHeaderInterface {
-    
+interface PdfHeaderInterface
+{
     /**
      * Writes the header for a single page.
      * Use the passed $objPdf to access the pdf.
-     * 
+     *
      * @param PdfTcpdf $objPdf the source pdf-object
+     *
      * @return void
      */
-    public function writeHeader($objPdf);
+    public function writeHeader($objPdf): void;
 
     /**
-     * If set to true, the first page is rendered without a header row
-     * @param bool $bitSkip
+     * If set to true, the first page is rendered without a header row.
+     *
      * @return void
      */
-    public function setBitSkipFirstPage(bool $bitSkip);
+    public function setBitSkipFirstPage(bool $bitSkip): void;
 }

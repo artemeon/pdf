@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the Artemeon Core - Web Application Framework.
  *
@@ -8,9 +9,7 @@
  * file that was distributed with this source code.
  */
 
-
 namespace Artemeon\Pdf;
-
 
 /**
  * Sample implementation of a footer.
@@ -19,7 +18,6 @@ namespace Artemeon\Pdf;
  */
 class PdfHeader implements PdfHeaderInterface
 {
-
     private bool $bitSkipFirstPage = false;
 
     /**
@@ -28,9 +26,8 @@ class PdfHeader implements PdfHeaderInterface
      *
      * @param PdfTcpdf $objPdf
      */
-    public function writeHeader($objPdf)
+    public function writeHeader($objPdf): void
     {
-
         if ($this->bitSkipFirstPage && $objPdf->getPage() == 1) {
             return;
         }
@@ -40,29 +37,19 @@ class PdfHeader implements PdfHeaderInterface
         $objPdf->SetFont('helvetica', '', 8);
 
         // Title
-        $objPdf->MultiCell(0, 0, $objPdf->getTitle(), "B", "C");
-
+        $objPdf->MultiCell(0, 0, $objPdf->getTitle(), 'B', 'C');
 
         // Line break
         $objPdf->Ln(30);
-
     }
 
-    /**
-     * @return bool
-     */
     public function getBitSkipFirstPage(): bool
     {
         return $this->bitSkipFirstPage;
     }
 
-    /**
-     * @param bool $bitSkip
-     */
-    public function setBitSkipFirstPage(bool $bitSkip)
+    public function setBitSkipFirstPage(bool $bitSkip): void
     {
         $this->bitSkipFirstPage = $bitSkip;
     }
-
-
 }
