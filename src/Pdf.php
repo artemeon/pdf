@@ -19,37 +19,37 @@ namespace Artemeon\Pdf;
 class Pdf
 {
 
-    public static $PAGE_ORIENTATION_PORTRAIT = "P";
-    public static $PAGE_ORIENTATION_LANDSCAPE = "L";
-    public static $PAGE_FORMAT_A4 = "A4";
+    public static string $PAGE_ORIENTATION_PORTRAIT = "P";
+    public static string $PAGE_ORIENTATION_LANDSCAPE = "L";
+    public static string $PAGE_FORMAT_A4 = "A4";
 
-    public static $PDF_UNIT = "mm";
+    public static string $PDF_UNIT = "mm";
 
-    public static $TEXT_ALIGN_CENTER = "C";
-    public static $TEXT_ALIGN_RIGHT = "R";
-    public static $TEXT_ALIGN_LEFT = "L";
+    public static string $TEXT_ALIGN_CENTER = "C";
+    public static string $TEXT_ALIGN_RIGHT = "R";
+    public static string $TEXT_ALIGN_LEFT = "L";
 
-    public static $FONT_STYLE_REGULAR = "";
-    public static $FONT_STYLE_BOLD = "B";
-    public static $FONT_STYLE_ITALIC = "I";
-    public static $FONT_STYLE_UNDERLINE = "U";
-    public static $FONT_STYLE_LINE_TROUGH = "D";
+    public static string $FONT_STYLE_REGULAR = "";
+    public static string $FONT_STYLE_BOLD = "B";
+    public static string $FONT_STYLE_ITALIC = "I";
+    public static string $FONT_STYLE_UNDERLINE = "U";
+    public static string $FONT_STYLE_LINE_TROUGH = "D";
 
-    public static $PDF_MARGIN_LEFT = 10;
-    public static $PDF_MARGIN_TOP = 15;
-    public static $PDF_MARGIN_RIGHT = 10;
+    public static int $PDF_MARGIN_LEFT = 10;
+    public static int $PDF_MARGIN_TOP = 15;
+    public static int $PDF_MARGIN_RIGHT = 10;
 
     /**
      * The default date format, e.g. used by the footer
      * @var string
      */
-    public static $DATE_FORMAT = "d.m.Y";
+    public static string $DATE_FORMAT = "d.m.Y";
 
 
     /**
      * @var PdfTcpdf
      */
-    private $objPdf;
+    private PdfTcpdf $objPdf;
 
 
     /**
@@ -224,7 +224,7 @@ class Pdf
      * @param string $strContent
      * @param int $intWidth
      * @param int $intHeight
-     * @param array $bitBorders array of boolean: array(top, right, bottom, left)
+     * @param array{0:bool,1:bool,2:bool,3:bool} $bitBorders array of boolean: array(top, right, bottom, left)
      * @param string $strAlign one of self::$TEXT_ALIGN_CENTER, self::$TEXT_ALIGN_RIGHT, self::$TEXT_ALIGN_LEFT
      * @param int $bitFill fill the cell with the color set before via setFillColor()
      *
@@ -261,7 +261,7 @@ class Pdf
      * @param string $strContent
      * @param int $intWidth
      * @param int $intHeight
-     * @param array $bitBorders array of boolean: array(top, right, bottom, left)
+     * @param array{0:bool,1:bool,2:bool,3:bool} $bitBorders array of boolean: array(top, right, bottom, left)
      * @param string $strAlign one of self::$TEXT_ALIGN_CENTER, self::$TEXT_ALIGN_RIGHT, self::$TEXT_ALIGN_LEFT
      * @param bool $bitFill
      * @param int|string $intX

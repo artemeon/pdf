@@ -20,7 +20,7 @@ namespace Artemeon\Pdf;
 class PdfHeader implements PdfHeaderInterface
 {
 
-    private $bitSkipFirstPage = false;
+    private bool $bitSkipFirstPage = false;
 
     /**
      * Writes the header for a single page.

@@ -29,21 +29,15 @@ class PdfTcpdf extends TCPDF
 {
 
 
-    protected $bitHeader = true;
-    protected $bitFooter = true;
+    protected bool $bitHeader = true;
+    protected bool $bitFooter = true;
 
-    /**
-     * @var ?PdfHeaderInterface
-     */
-    protected $objHeader = null;
+    protected ?PdfHeaderInterface $objHeader = null;
 
-    /**
-     * @var ?PdfFooterInterface
-     */
-    protected $objFooter = null;
+    protected ?PdfFooterInterface $objFooter = null;
 
     //Page header
-    public function Header()
+    public function Header(): void
     {
 
         if (!$this->bitHeader) {
@@ -65,7 +59,7 @@ class PdfTcpdf extends TCPDF
     }
 
     // Page footer
-    public function Footer()
+    public function Footer(): void
     {
 
         if (!$this->bitFooter) {
@@ -85,50 +79,50 @@ class PdfTcpdf extends TCPDF
     }
 
 
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
 
 
-    public function getBitHeader()
+    public function getBitHeader(): bool
     {
         return $this->bitHeader;
     }
 
-    public function setBitHeader($bitHeader)
+    public function setBitHeader(bool $bitHeader): void
     {
         $this->setPrintHeader($bitHeader);
         $this->bitHeader = $bitHeader;
     }
 
-    public function getBitFooter()
+    public function getBitFooter(): bool
     {
         return $this->bitFooter;
     }
 
-    public function setBitFooter($bitFooter)
+    public function setBitFooter(bool $bitFooter): void
     {
         $this->setPrintFooter($bitFooter);
         $this->bitFooter = $bitFooter;
     }
 
-    public function getObjHeader()
+    public function getObjHeader(): ?PdfHeaderInterface
     {
         return $this->objHeader;
     }
 
-    public function setObjHeader($objHeader)
+    public function setObjHeader(?PdfHeaderInterface $objHeader): void
     {
         $this->objHeader = $objHeader;
     }
 
-    public function getObjFooter()
+    public function getObjFooter(): ?PdfFooterInterface
     {
         return $this->objFooter;
     }
 
-    public function setObjFooter($objFooter)
+    public function setObjFooter(?PdfFooterInterface $objFooter): void
     {
         $this->objFooter = $objFooter;
     }

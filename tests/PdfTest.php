@@ -17,7 +17,7 @@ use PHPUnit\Framework\TestCase;
 class PdfTest extends TestCase
 {
 
-    public function test()
+    public function test(): void
     {
 
         //test code

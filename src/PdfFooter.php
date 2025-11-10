@@ -19,11 +19,11 @@ namespace Artemeon\Pdf;
 class PdfFooter implements PdfFooterInterface
 {
 
-    private $strFooterAddon = "";
+    private string $strFooterAddon = "";
 
-    private $bitSkipFirstPage = false;
+    private bool $bitSkipFirstPage = false;
 
-    private $dateFormat = "m/d/Y";
+    private string $dateFormat = "m/d/Y";
 
 
 
@@ -93,7 +93,7 @@ class PdfFooter implements PdfFooterInterface
     /**
      * @param string $dateFormat
      */
-    public function setDateFormat(string $dateFormat)
+    public function setDateFormat(string $dateFormat): void
     {
         $this->dateFormat = $dateFormat;
     }
